@@ -1,0 +1,142 @@
+@layout('layout.dashboard')
+@section('content')
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Dashboard</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard / Home</li>
+            </ol>
+            {{--  dash cards   --}}
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="d-flex">
+                            <h4 class="card-body"><i class="mr-2 far fa-newspaper"></i>News</h4>
+                            <h4 class="card-body text-right">{{news.length}}</h4>
+                        </div> 
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/dashboard/news">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card bg-info text-white mb-4">
+                        <div class="d-flex">
+                            <h4 class="card-body"><i class="mr-2 fa fa-chevron-up"></i>Updates</h4>
+                            <h4 class="card-body text-right">{{update.length}}</h4>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/dashboard/updates">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="d-flex">
+                            <h4 class="card-body"><i class="mr-2 fa fa-tasks"></i>Projects</h4>
+                            <h4 class="card-body text-right">{{project.length}}</h4>
+                        </div>                
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="/dashboard/projects">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <hr/>
+            {{--  sections  --}}
+            <div class="row">
+                {{--  news  --}}
+                <div class="col-lg-4 col-md-6 col-sm-12" >
+                    <div class="card mb-4 overflow-auto" style="height:500px">
+                        <div class="card-header dash-card-header bg-primary text-white">
+                            <i class="mr-2 far fa-newspaper"></i>News
+                        </div>
+                        <div class="card-body">
+                            {{--  listing  --}}
+                            @each(post in news)    
+                                <div class="card mb-4 overflow-auto">
+                                    <div class="card-header bg-dark text-white">
+                                        {{post.title}}
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <img src="/uploads/post/{{post.image}}" alt="service-img" width="200" height="120" class="rounded">
+                                        </div>
+                                        <p>
+                                            {{{post.desc}}}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                            {{post.created_at}}
+                                    </div>
+                                </div>
+                            @endeach
+                        </div>
+                    </div>
+                </div>
+                {{--  updates  --}}
+                <div class="col-lg-4 col-md-6 col-sm-12" >
+                    <div class="card mb-4 overflow-auto" style="height:500px">
+                        <div class="card-header dash-card-header bg-info text-white">
+                            <i class="mr-2 fa fa-chevron-up"></i>Updates
+                        </div>
+                        <div class="card-body">
+                            {{--  listing  --}}
+                            @each(post in update)    
+                                <div class="card mb-4 overflow-auto">
+                                    <div class="card-header bg-dark text-white">
+                                        {{post.title}}
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <img src="/uploads/post/{{post.image}}" alt="service-img" width="200" height="120" class="rounded">
+                                        </div>
+                                        <p>
+                                            {{{post.desc}}}
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                            {{post.created_at}}
+                                    </div>
+                                </div>
+                            @endeach
+                        </div>
+                    </div>
+                </div>
+                {{--  projects  --}}
+                <div class="col-lg-4 col-md-6 col-sm-12" >
+                    <div class="card mb-4 overflow-auto" style="height:500px">
+                        <div class="card-header dash-card-header bg-success text-white">
+                            <i class="mr-2 fa fa-tasks"></i>Projects
+                        </div>
+                        <div class="card-body">
+                            {{--  listing  --}}
+                            @each(post in project)    
+                                <div class="card mb-4 overflow-auto">
+                                    <div class="card-header bg-dark text-white">
+                                        {{post.title}}
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <img src="/uploads/project/{{post.image}}" alt="service-img" width="200" height="120" class="rounded">
+                                        </div>
+                                        <p>
+                                            {{{post.desc}}}
+                                        </p>
+                                        <span class="abt-title badge badge-primary" id="about">{{post.type}}</span>
+                                    </div>
+                                    <div class="card-footer">
+                                            {{post.created_at}}
+                                    </div>
+                                </div>
+                            @endeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+@endsection

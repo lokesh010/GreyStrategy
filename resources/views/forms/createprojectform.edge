@@ -1,0 +1,42 @@
+@layout('layout.dashboard')
+@section('content')
+    <div class="p-4">
+        <h3>{{title}}</h3>
+        @include('inc.alert')
+        <form action="{{ route }}" method="POST" enctype="multipart/form-data">
+            {{ csrfField() }}
+            <div class="form-group">
+                <div class="mb-2">
+                    <label for="image">Choose an image</label>
+                    <input name="image" type="file" class="form-control-file">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('image'), hasErrorFor('image')) }}
+                </div>
+                <hr/>
+                    <label for="title">Title</label>
+                    <input name="title" type="text" class="form-control {{hasErrorFor('title') && 'border-danger'}}"
+                     placeholder="Enter Title" value="{{ old('title', '') }}">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+                <br/>
+                <div class="form-group">
+                    <label for="type">Project Type</label>
+                    <select class="form-control btn border" name="type" default="ongoing" id="type">
+                      <option value="ongoing" selected="selected">Ongoing</option>
+                      <option value="completed">Completed</option>
+                      <option value="concept">Concept</option>
+                      <option value="research">Research</option>
+                    </select>
+                </div>
+                <br/>
+                <label for="desc">Description</label>
+                <textarea id="summernote" class="bg-white" name="desc"></textarea>
+                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+            </div>
+                <br/>                      
+            {{--  footer  --}}
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-secondary" href="{{route}}">Close</a>
+            </div>
+        </form> 
+    </div>   
+@endsection

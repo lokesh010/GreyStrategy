@@ -1,0 +1,31 @@
+<style>
+  .alert{
+    width: 100%;
+  }
+
+  @media (min-width: 767.98px) { 
+    .alert{
+      width: 60%;
+    }
+  }
+</style>
+
+<script>
+  setTimeout(function() {
+    $(".alert").hide(); 
+  }, 3000);
+</script>
+
+@if(flashMessage('success'))
+    <div class="alert alert-success mx-auto" role="alert">
+      <i class="fa fa-check" aria-hidden="true"></i>
+      {{ flashMessage('success') }}
+    </div>
+@elseif(flashMessage('danger'))
+    <div class="alert alert-danger mx-auto" role="alert">
+      <i class="fas fa-exclamation-circle"></i>
+      {{ flashMessage('danger') }}
+    </div>
+@else
+    
+@endif

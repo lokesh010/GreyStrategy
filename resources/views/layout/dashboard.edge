@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @include('inc.links')
+
+    {{style('dashboard.css')}}
+
+    <title>Grey Strategy | Dashboard</title>
+</head>
+<body>
+    @include('dashboard.topbar')
+
+    <div id="layoutSidenav" style="min-height: 100vh">
+        @include('dashboard.sidenav')
+        
+        <div id="layoutSidenav_content">
+            @!section('content')
+
+            @include('dashboard.footer')
+        </div>
+    </div>
+
+    @include('inc.dashboard-scripts')
+</body>
+</html>

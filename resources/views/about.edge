@@ -1,0 +1,145 @@
+@layout('layout.main')
+
+@section('title')
+  Grey Strategy | About
+@endsection
+
+@section('content')
+<section class="banner">
+    <img src="./assets/img/about.png" alt="" />
+  </section>
+
+  <section class="about">
+    <div class="container-small">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-12">
+          <h2 class="abt-title" id="about">About</h2>
+          <p>
+            Grey Strategy (GS) is an independent and private diplomatic
+            advisory group located in Kathmandu, Nepal. We work with agencies
+            and embassies, institutions and individuals, companies and
+            government to help them rebuild their roles in a public facing
+            environment and help them to be effective change makers for the
+            growth of the nation through effective diplomacy and address the
+            problems with GS Diplomatic
+          </p>
+          <h2 class="abt-title" id="team">Our Team</h2>
+          <div class="team-item">
+            <div class="team-desc">
+              <p>
+                Holds the Master’s Degree in International Relations and
+                Diplomacy. He has outstanding knowledge in the area
+                arbitration, mediation and negotiation. He expertise in
+                strategic and political communication. He is active in
+                developing diplomatic leadership and International academic
+                relations.
+              </p>
+            </div>
+            <div class="team-img">
+              <img src="./assets/img/team1.png" alt="" />
+              <span>Manish Subedi</span>
+              <span>Co-Founder</span>
+            </div>
+          </div>
+          <div class="team-item">
+            <div class="team-desc">
+              <p>
+                Holds Bachelor’s Degree in Business Management and Law. He has
+                been working in the area of constitutional law studies and
+                issues of legislative and institutional reforms. He has been
+                monitoring human rights assemblies and writing about the
+                contemporary human rights issues in the context of Nepal. He
+                has exposure of both International Business and International
+                Law.
+              </p>
+            </div>
+            <div class="team-img">
+              <img src="./assets/img/team2.png" alt="" />
+              <span>Abhisekh Jha</span>
+              <span>Co-Founder</span>
+            </div>
+          </div>
+          <h2 class="abt-title" id="advisory">Advisory Group</h2>
+          <div class="tms">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <img src="./assets//img/dummy.png" alt="" />
+                <span>Associate</span>
+                <div class="owl-carousel owl-theme team-owl">
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <img src="./assets//img/dummy.png" alt="" />
+                <span>Associate</span>
+                <div class="owl-carousel owl-theme team-owl">
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                <img src="./assets//img/dummy.png" alt="" />
+                <span>Associate</span>
+                <div class="owl-carousel owl-theme team-owl">
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                  <div class="item">
+                    <img src="./assets//img/dummy.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-12">
+          <div class="sidebar">
+            <div class="small-menu">
+              <ul>
+                <li>
+                  <a href="#about">About</a>
+                </li>
+                <li>
+                  <a href="#team">Our Team</a>
+                </li>
+                <li>
+                  <a href="#advisory">Advisary Group</a>
+                </li>
+                <li>
+                  <a href="#news">Latest News and Updates</a>
+                </li>
+              </ul>
+            </div>
+            <div class="newsletter">
+              <h2>Sign Up for updates</h2>
+              <div class="subs-box">
+                <input type="email" placeholder="Email" />
+                <a class="subs-btn"> Sign Up </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  @!component('inc.bottom-article', {news, update, socialPost})
+@endsection

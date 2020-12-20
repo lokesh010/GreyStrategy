@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @include('inc.links')
+
+    {{ style('style') }}
+    {{ style('assets/css/main.css') }}
+    
+    <title>
+        @!section('title')
+    </title>
+</head>
+
+<body>
+    {{--  facebook SDK  --}}
+    <div id="fb-root"></div>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+    {{--  ---facebook SDK  --}}
+    
+    @include('inc.header')
+    @include('inc.sticky')
+        @!section('content')
+    @include('inc.footer')
+
+    @include('inc.scripts')
+</body>
+
+</html>

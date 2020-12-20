@@ -1,0 +1,37 @@
+@layout('layout.main')
+
+@section('title')
+  Grey Strategy | {{post.title}}
+@endsection
+
+@section('content')
+<div class="container my-3">
+    <div class="section">
+        <div class="col span_2_of_3">
+            <div class="blog-post">
+                <h1 class="blog-title">{{post.title}}</h1>
+                @if(post.category)
+                    <span class="abt-title badge badge-primary p-2 mb-3" id="about">{{post.category}}</span>
+                @elseif(post.type)
+                    <span class="abt-title badge badge-primary p-2 mb-3" id="about">{{post.type}}</span>
+                @endif
+                <h5 class="date">{{post.created_at}}</h5>
+                <p class="blog-content">{{{post.desc}}}</p>
+            </div>
+        </div>
+      
+        <aside class="col span_1_of_3 ">
+            <div class="side-post">
+                {{--  if not project  --}}
+            @if(post.category)
+                <img src="{{ assetsUrl('uploads/post/') }}{{post.image}}" alt="project-img">        
+            {{--  if project  --}}
+            @elseif(post.type)
+                <img src="{{ assetsUrl('uploads/project/') }}{{post.image}}" alt="project-img">
+            @endif
+    </aside>
+</div>
+</div>
+
+    
+@endsection

@@ -1,0 +1,67 @@
+@layout('layout.dashboard')
+@section('content')
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">News</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard / News</li>
+        </ol>
+        <div>
+            {{--  alert  --}}
+            @include('inc.alert')
+            {{--  create button  --}}
+            <a class="btn btn-info mb-4" href="/dashboard/news/create">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                Create
+            </a>
+            {{--  body  --}}
+            <div>
+                {{--  listing  --}}
+                <ul class="list-group">
+                @each(post in news)
+                    <li class="list-group-item list-group-item-action toggle btn px-4 {{$loop.index % 2 == 0 ? 'bg-white': 'bg-light'}}"
+                    data-toggle="detail-{{post.id}}">
+                            <div class="row list-hover">
+                                {{--  title  --}}
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ assetsUrl('uploads/post/'+post.image) }}" alt="service-img" class="rounded mr-2" width="50" height="50" style="object-fit:cover">
+                                    <div style="text-align: initial">
+                                        <h5>{{post.title}}</h5>
+                                        <span class="badge badge-primary">{{post.category}}</span>
+                                    </div>
+                                </div>
+                                {{--  buttons  --}}
+                                <div class="ml-auto d-flex">
+                                    <div class="ml-auto text-center d-flex align-self-center">
+                                        {{--  edit  --}}
+                                        <a href='/dashboard/news/edit/{{post.id}}' class="btn text-info">
+                                            <i class="fa fa-pen" aria-hidden="true"></i>
+                                        </a>
+                                        {{--  delete  --}}
+                                        <form action="{{'/dashboard/news/'+ post.id + '?_method=DELETE'}}" method="POST">
+                                            {{ csrfField() }}
+                                            <button class="btn text-danger" href="" data-toggle="modal" data-target=".project-modal">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {{--  dropdown  --}}
+                            <div id="detail-{{post.id}}">
+                                <hr>
+                                <div>
+                                    {{{post.desc}}}
+                                </div>
+                            </div>
+                        </li>
+                    @endeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+@endsection

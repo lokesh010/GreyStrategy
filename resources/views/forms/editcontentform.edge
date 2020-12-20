@@ -1,0 +1,51 @@
+@layout('layout.dashboard')
+@section('content')
+    <div class="p-4">
+        <h3>{{title}}</h3>
+        <hr>
+        @include('inc.alert')
+        <form action="{{ action }}" method="POST" enctype="multipart/form-data">
+            {{ csrfField() }}
+            <div class="form-group">
+                <img src="{{ assetsUrl('uploads/post/'+content.image) }}" alt="service-img" width="200" height="200" style="object-fit:cover" class="border rounded-circle">
+                <div class="mb-2">
+                    <label for="image">Choose an image</label>
+                    <input name="image" type="file" class="form-control-file">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('image'), hasErrorFor('image')) }}
+                </div>
+                <hr/>
+                    <label for="title">Title</label>
+                    <input name="title" type="text" value="{{content.title}}" class="form-control {{hasErrorFor('title') && 'border-danger'}}" placeholder="Enter Title">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+                <br/>
+                @if(title === 'Update News')
+                    <div class="form-group">
+                        <label for="type">News Type</label>
+                        <select class="form-control btn border" name="category"  id="type">
+                            <option value="resources" {{ content.category === 'resources' && 'selected' }}>Resources</option>
+                            <option value="interview" {{ content.category === 'interview' && 'selected' }}>Interview</option>
+                            <option value="reportcast" {{ content.category === 'reportcast' && 'selected' }}>Report Cast</option>
+                        </select>
+                    </div>
+                @elseif(title === 'Update updates')
+                    <div class="form-group">
+                        <label for="type">Project Type</label>
+                        <select class="form-control btn border" name="category"  id="type">
+                            <option value="latestupdate" {{ content.category === 'latestupdates' && 'selected' }}>Latest Updates</option>
+                            <option value="article" {{ content.category === 'article' && 'selected' }}>Article</option>
+                        </select>
+                    </div>
+                @endif
+                    <label for="desc">Description</label>
+                    <textarea id="summernote" name="desc">{{{content.desc}}}</textarea>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+            </div>
+                <br/>                      
+            {{--  footer  --}}
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-secondary" href="{{onCancel}}">Close</a>
+            </div>
+        </form> 
+    </div>   
+@endsection

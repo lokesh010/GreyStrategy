@@ -1,0 +1,87 @@
+@layout('layout.main')
+
+@section('title')
+  Grey Strategy | Updates
+@endsection
+
+@section('content')
+  <section class="banner">
+    <img src="./assets/img/newspage.png" alt="blog-img" />
+  </section>
+
+  <section class="about blogs">
+    <div class="container-small">
+      <div class="row">
+        <div class="col-lg-12">
+          {{--  resources  --}}
+          @if(resources.length)
+            <h2 class="abt-title">Resources</h2>
+            <div class="owl-carousel owl-theme blog-owl">
+              @each(post in resources)
+                <div class="item blog-item">
+                  <img src="{{ assetsUrl('uploads/post/')}}{{post.image}}" alt="" />
+                  <h2>{{post.title}}</h2>
+                  <span class="time">
+                    <i>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                      >
+                        <path
+                          d="M6.994 0C3.682 0 1 2.688 1 6C1 9.312 3.682 12 6.994 12C10.312 12 13 9.312 13 6C13 2.688 10.312 0 6.994 0ZM7 10.8C4.348 10.8 2.2 8.652 2.2 6C2.2 3.348 4.348 1.2 7 1.2C9.652 1.2 11.8 3.348 11.8 6C11.8 8.652 9.652 10.8 7 10.8Z"
+                          fill="#353535"
+                        />
+                        <path
+                          d="M7.125 3.2002H6.25V7.03697L9.3125 9.05127L9.75 8.26473L7.125 6.55737V3.2002Z"
+                          fill="#353535"
+                        />
+                      </svg>
+                    </i>
+                    {{post.created_at}}
+                  </span>
+                  <div class="block-with-text mb-2">
+                    <p>
+                      {{{post.desc}}}
+                    </p>
+                  </div>
+                <a href="/news/{{post.slug}}" class="rdmr">Read More</a>
+                </div>
+              @endeach
+            </div>
+          @endif
+          
+          {{--  interview  --}}
+          @if(interview.length)
+            <h2 class="abt-title">Interview</h2>
+            <div class="owl-carousel owl-theme interview-owl">
+              @each(post in interview)
+                <div class="item">
+                  <img class="rounded-circle" src="{{ assetsUrl('uploads/post/') }}{{post.image}}" alt="" />
+                  <h2>{{post.title}}</h2>
+                  <p>
+                    {{{post.desc}}}
+                  </p>
+                </div>
+              @endeach
+            </div>   
+          @endif
+          
+          {{--  report cast  --}}
+          @if(reportcast.length)
+            <h2 class="abt-title">Report Cast</h2>
+            <div class="owl-carousel owl-theme report-owl">
+              @each(post in reportcast)
+                <div class="item">
+                <img src="{{ assetsUrl('uploads/post/') }}{{post.image}}" alt="reportcast" />
+                </div>
+              @endeach
+            </div>
+          @endif
+        </div>
+      </div>
+    </div>
+  </section>
+@endsection

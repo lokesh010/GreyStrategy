@@ -1,0 +1,64 @@
+{{--  navigation  --}}
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="nav-link" target="blank" href="/">
+                    <div class="sb-nav-link-icon"><i class="fa fa-eye"></i></div>
+                    Visit Site
+                </a>
+                <a class="nav-link {{ request.match('/dashboard') ? 'bg-info':'' }}" href="/dashboard">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Dashboard
+                </a>
+                <div class="sb-sidenav-menu-heading">Contents</div>
+                <a class="nav-link collapsed {{ request.match('/dashboard/news') || request.match('/dashboard/updates')|| request.match('/dashboard/articles')||request.match('/dashboard/social-posts') ? 'bg-info text-white':'' }}"
+                    href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                    aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon"><i class="fa fa-rss-square"></i></div>
+                        Blogs
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                    data-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ request.match('/dashboard/news') ? 'bg-info':'' }}" href="/dashboard/news">
+                            <div class="sb-nav-link-icon"><i class="fa fa-newspaper"></i></div>
+                            News
+                        </a>
+                        <a class="nav-link {{ request.match('/dashboard/updates') ? 'bg-info':'' }}" href="/dashboard/updates">
+                            <div class="sb-nav-link-icon"><i class="fa fa-chevron-up"></i></div>
+                            Updates
+                        </a>
+                        <a class="nav-link {{ request.match('/dashboard/social-posts') ? 'bg-info':'' }}" href="/dashboard/social-posts">
+                            <div class="sb-nav-link-icon"><i class="fab fa-facebook"></i></div>
+                            Facebook Posts
+                        </a>    
+                    </nav>
+                </div>
+                <a class="nav-link {{ request.match('/dashboard/projects') ? 'bg-info':'' }}" href="/dashboard/projects">
+                    <div class="sb-nav-link-icon"><i class="fa fa-tasks"></i></div>
+                    Projects
+                </a>
+                <a class="nav-link {{ request.match('/dashboard/testimonials') ? 'bg-info':'' }}" href="/dashboard/testimonials">
+                    <div class="sb-nav-link-icon"><i class="fas fa-comment-dots"></i></div>
+                    Testimonials
+                </a>
+                <a class="nav-link {{ request.match('/dashboard/contact') ? 'bg-info':'' }}" href="/dashboard/contact">
+                    <div class="sb-nav-link-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    Contact
+                </a>
+                <div class="sb-sidenav-menu-heading">Account</div>
+                <a class="nav-link {{ request.match('/dashboard/credentials') ? 'bg-info':'' }}" href="/dashboard/credentials">
+                    <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                    Credentials
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            {{ auth.user.email }}
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,207 @@
+@layout('layout.main')
+
+@section('title')
+  Grey Strategy | Services
+@endsection
+
+@section('content')
+<section class="banner">
+  <img src="./assets/img/servicebck.png" alt="" />
+</section>
+
+<section class="about">
+  <div class="container-small">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-12">
+        <h2 class="abt-title" id="service">Services</h2>
+        <p>
+          As a strategic agency, we focus on your audience, message and
+          impact. We provide service in all areas of international relations
+          and diplomacy - Arbitration, Negotiations, Mediations,
+          Correspondence, Lobby, Strategic Communication, Political
+          Communication, Consultation and top-notch creative researches. Our
+          approach to your unique goals. Right from the outset, we share our
+          client’s vision and work for their best interest.
+        </p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="sidebar">
+          <div class="small-menu">
+            <ul>
+              <li>
+                <a href="#service">Services</a>
+              </li>
+              <li>
+                <a href="#impact">Impact Story</a>
+              </li>
+              <li>
+                <a href="/updates">Latest News and Updates</a>
+              </li>
+            </ul>
+          </div>
+          <div class="newsletter">
+            <h2>Sign Up for updates</h2>
+            <div class="subs-box">
+              <input type="email" placeholder="Email" />
+              <a class="subs-btn"> Sign Up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="services">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/1.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Arbitration</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/2.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Negotiations</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/3.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Mediations</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/4.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Correspondence</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/5.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Lobby</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/6.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Strategic Communication</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/7.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Political Communication</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+              <div class="ser-item">
+                <div class="ser-img">
+                  <img src="./assets/img/8.png" alt="" />
+                </div>
+                <div class="ser-desc">
+                  <h2>Consultation</h2>
+                  <p>
+                    As a strategic agency, we focus on your audience,
+                    message and impact. We provide service in all areas of
+                    international relations and diplomacy - vision and work
+                    for their best interest.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @if(impactstory.length)
+          <h2 class="abt-title" id="impact">Impact Story</h2>
+          <div class="owl-carousel owl-theme impact-owl">
+            @each(post in impactstory)
+              <div class="item">
+                <i>
+                  {{{post.desc}}}
+                </i>
+              <img src="/uploads/testimonials/{{post.image}}" alt="testimonial" />
+                <strong>{{post.name}}</strong>
+              <span>{{post.location}}</span>
+              </div>
+            @endeach
+          </div>
+        @endif
+
+        @if(ourclients.length)
+        <h2 class="abt-title" id="impact">Our Clients</h2>
+        <div class="owl-carousel owl-theme impact-owl">
+          @each(post in ourclients)
+            <div class="item">
+              <i>
+                {{{post.desc}}}
+              </i>
+            <img src="/uploads/testimonials/{{post.image}}" alt="testimonial" />
+              <strong>{{post.name}}</strong>
+            <span>{{post.location}}</span>
+            </div>
+          @endeach
+        </div>
+      @endif
+  </div>
+</section>  
+@!component('inc.bottom-article', {news, update, socialPost})
+  
+@endsection

@@ -1,0 +1,56 @@
+<!-- Articles Start -->
+  <section class="articles">
+    <div class="container-small">
+      <div class="row">
+        {{--  news  --}}
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+            <a href="/latest-news" class="text-decoration-none"><h2 class="article-title">Latest News</h2></a>
+            <div class="article-item">
+              <h3 class="title">{{news[0].category}}</h3>
+            <div class="block-with-text mb-2">
+              <p>
+                {{news[0].title}}
+              </p>
+            </div>
+            <img class="art-img" src="uploads/post/{{news[0].image}}" alt="news" />
+            <a href="/news/{{news[0].slug}}" class="rd-more">Read More</a>
+            </div> 
+        </div>
+        {{--  updates  --}}
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+            <a href="/latest-updates" class="text-decoration-none"><h2 class="article-title">Latest Updates</h2></a>
+            <div class="article-item">
+              <h3 class="title">{{update[0].category}}</h3>
+              <div class="block-with-text mb-2">
+              <p>
+                {{update[0].title}}
+              </p>
+            </div>
+            <img class="art-img" src="uploads/post/{{update[0].image}}" alt="update" />
+            <a href="/update/{{update[0].slug}}" class="rd-more">Read More</a>
+            </div> 
+        </div>
+        {{--  social posts  --}}
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+          <h2 class="article-title">Latest Posts</h2>
+          <h3 class="s-title">Quick Updates by @GreyStrategy</h3>
+          <div class="social-post">
+            {{--  loop  --}}
+            @each(post in socialPost)
+              <div class="post-item">
+                <div class="fb-post" 
+              data-href="{{post.link}}"
+                    data-width="00">
+                </div>
+              </div>
+            @endeach
+          </div>
+          <div class="bottom">
+            <span>Embedded</span>
+            <span><a href="#!">View on Social Media</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Articles End -->

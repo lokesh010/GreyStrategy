@@ -1,0 +1,44 @@
+@layout('layout.dashboard')
+@section('content')
+    <div class="p-4">
+        <h3>{{title}}</h3>
+        <hr>
+        @include('inc.alert')
+        <form action="{{ action }}" method="POST" enctype="multipart/form-data">
+            {{ csrfField() }}
+            <div class="form-group">
+                <img src="{{ assetsUrl('uploads/testimonials/'+content.image) }}" alt="service-img" width="200" height="200" style="object-fit:cover" class="border rounded-circle">
+                <div class="mb-2">
+                    <label for="image">Choose an image</label>
+                    <input name="image" type="file" class="form-control-file">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('image'), hasErrorFor('image')) }}
+                </div>
+                <hr/>
+                    <label for="name">Name</label>
+                    <input name="name" type="text" value="{{content.name}}" class="form-control {{hasErrorFor('name') && 'border-danger'}}" placeholder="Enter Name">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+                <br/>
+                    <label for="location">Location</label>
+                    <input name="location" type="text" value="{{content.location}}" class="form-control {{hasErrorFor('location') && 'border-danger'}}" placeholder="Enter Location">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('location'), hasErrorFor('location')) }}
+                <br/>
+                    <div class="form-group">
+                        <label for="type">Testimonial Type</label>
+                        <select class="form-control btn border" name="type" id="type">
+                            <option value="impactstory" {{ content.type === 'impactstory' && 'selected' }}>Impact Story</option>
+                            <option value="ourclients" {{ content.type === 'ourclients' && 'selected' }}>Our Clients</option>
+                        </select>
+                    </div>
+                    <label for="desc">Description</label>
+                    <textarea id="summernote" name="desc">{{{content.desc}}}</textarea>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+            </div>
+                <br/>                      
+            {{--  footer  --}}
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-secondary" href="{{onCancel}}">Close</a>
+            </div>
+        </form> 
+    </div>   
+@endsection

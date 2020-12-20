@@ -1,0 +1,64 @@
+@layout('layout.dashboard')
+@section('content')
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Contact Messages</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard / Contact Messages</li>
+        </ol>
+        <div>
+            {{--  alert  --}}
+            @include('inc.alert')
+            {{--  body  --}}
+            <div>
+                {{--  listing  --}}
+                <ul class="list-group">
+                @each(post in contact)
+                    <li class="list-group-item list-group-item-action toggle btn px-4 {{$loop.index % 2 == 0 ? 'bg-white': 'bg-light'}}"
+                    data-toggle="detail-{{post.id}}">
+                            <div class="py-2 list-hover">
+                                {{--  title  --}}
+                                <div class="row px-3 align-items-center">
+                                    
+                                    <div class="col-md-4 col-sm-6 mr-2">
+                                        <p style="font-size: 1em"><b>{{post.full_name}}</b></p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mr-2 ">
+                                        <p style="font-size: 1em"><i>{{post.email}}</i></p>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6 mr-2">
+                                        <p style="font-size: 1em">{{post.phone}}</p>
+                                    </div>
+                                    {{--  buttons  --}}
+                                <div class="ml-auto d-flex">
+                                    {{--  delete  --}}
+                                    <form action="{{'/dashboard/contact/'+ post.id + '?_method=DELETE'}}" method="POST">
+                                        {{ csrfField() }}
+                                        <button class="btn text-danger" href="" data-toggle="modal" data-target=".project-modal">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                </div>
+                                
+                            </div>
+                            {{--  dropdown  --}}
+                            <div id="detail-{{post.id}}">
+                                <hr>
+                                <div>
+                                    <h5><strong>{{post.title}}</strong></h5>
+                                    <br/>
+                                    {{{post.message}}}
+                                </div>
+                            </div>
+                        </li>
+                    @endeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+@endsection

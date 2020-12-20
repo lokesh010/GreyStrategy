@@ -1,0 +1,131 @@
+@layout('layout.main')
+
+@section('title')
+  Grey Strategy | Projects
+@endsection
+
+@section('content')
+<section class="banner">
+  <img src="./assets/img/projectbck.png" alt="" />
+</section>
+
+<section class="about">
+  <div class="container-small">
+    <div class="row">
+      {{--  projects  --}}
+      <div class="col-lg-8 col-md-8 col-12">
+        <h2 class="abt-title" id="projects">Projects</h2>
+        <div class="project-cont">
+          @if(ongoing.length)
+            <h3>Ongoing Projects</h3>
+            <div class="row">
+              @each(project in ongoing)
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="proj-item">
+                  <img src="/uploads/project/{{project.image}}" alt="project-img" />
+                    <h4>{{project.title}}</h4>
+                    <div class="block-with-text">
+                      <p>
+                        {{{project.desc}}}
+                      </p>
+                    </div>
+                    <a href="/project/{{project.slug}}" class="morebtn">Read More</a>
+                  </div>
+                </div>
+              @endeach
+            </div>
+          @endif
+          @if(completed.length)
+            <h3>Completed Projects</h3>
+            <div class="row">
+              @each(project in completed)
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="proj-item">
+                  <img src="/uploads/project/{{project.image}}" alt="project-img" />
+                    <h4>{{project.title}}</h4>
+                    <div class="block-with-text">
+                      <p>
+                        {{{project.desc}}}
+                      </p>
+                    </div>
+                    <a href="/project/{{project.slug}}" class="morebtn">Read More</a>
+                  </div>
+                </div>
+              @endeach
+            </div>
+          @endif
+          @if(concept.length)
+            <h3>Concept Projects</h3>
+            <div class="row">
+              @each(project in concept)
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="proj-item">
+                  <img src="/uploads/project/{{project.image}}" alt="project-img" />
+                    <h4>{{project.title}}</h4>
+                    <div class="block-with-text">
+                      <p>
+                        {{{project.desc}}}
+                      </p>
+                    </div>
+                    <a href="/project/{{project.slug}}" class="morebtn">Read More</a>
+                  </div>
+                </div>
+              @endeach
+            </div>
+          @endif
+        </div>
+        @if(research.length)
+        <h2 class="abt-title" id="advisory">Research and Advocacy</h2>
+        <div class="project-cont">
+          <div class="row">
+            @each(project in research)
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="proj-item">
+                  <img src="/uploads/project/{{project.image}}" alt="project-img" />
+                    <h4>{{project.title}}</h4>
+                    <div class="block-with-text">
+                      <p>
+                        {{{project.desc}}}
+                      </p>
+                    </div>
+                    <a href="/project/{{project.slug}}" class="morebtn">Read More</a>
+                  </div>
+                </div>
+              @endeach
+          </div>
+        </div>
+          @endif
+      </div>
+
+      {{--  side nav  --}}
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="sidebar">
+          <div class="small-menu">
+            <ul>
+              <li>
+                <a href="#ongoing">Ongoing Projects</a>
+              </li>
+              <li>
+                <a href="#completed">Completed Projects</a>
+              </li>
+              <li>
+                <a href="#concept">Concept Projects</a>
+              </li>
+              <li>
+                <a href="#research">Research Projects</a>
+              </li>
+            </ul>
+          </div>
+          <div class="newsletter">
+            <h2>Sign Up for updates</h2>
+            <div class="subs-box">
+              <input type="email" placeholder="Email" />
+              <a class="subs-btn"> Sign Up </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+@endsection

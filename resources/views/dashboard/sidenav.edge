@@ -3,6 +3,7 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
+                
                 <div class="sb-sidenav-menu-heading">Core</div>
                 <a class="nav-link" target="blank" href="/">
                     <div class="sb-nav-link-icon"><i class="fa fa-eye"></i></div>
@@ -12,7 +13,23 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
+                
+                <div class="sb-sidenav-menu-heading">Sections</div>
+                <a class="nav-link {{ request.match('/dashboard/advisory') ? 'bg-info':'' }}" href="/dashboard/advisory">
+                    <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
+                    Advisory Group
+                </a>
+                <a class="nav-link {{ request.match('/dashboard/work-philosophy') ? 'bg-info':'' }}" href="/dashboard/work-philosophy">
+                    <div class="sb-nav-link-icon"><i class="fa fa-briefcase"></i></div>
+                    Work Philosophy
+                </a>
+                <a class="nav-link {{ request.match('/dashboard/services') ? 'bg-info':'' }}" href="/dashboard/services">
+                    <div class="sb-nav-link-icon"><i class="fa fa-briefcase"></i></div>
+                    Services
+                </a>
+
                 <div class="sb-sidenav-menu-heading">Contents</div>
+                {{--  blogs  --}}
                 <a class="nav-link collapsed {{ request.match('/dashboard/news') || request.match('/dashboard/updates')|| request.match('/dashboard/articles')||request.match('/dashboard/social-posts') ? 'bg-info text-white':'' }}"
                     href="#" data-toggle="collapse" data-target="#collapseLayouts"
                     aria-expanded="false" aria-controls="collapseLayouts">
@@ -32,11 +49,13 @@
                             Updates
                         </a>
                         <a class="nav-link {{ request.match('/dashboard/social-posts') ? 'bg-info':'' }}" href="/dashboard/social-posts">
-                            <div class="sb-nav-link-icon"><i class="fab fa-facebook"></i></div>
-                            Facebook Posts
+                            <div class="sb-nav-link-icon"><i class="fa fa-globe"></i></div>
+                            Social Posts
                         </a>    
                     </nav>
                 </div>
+
+                {{--  Projects  --}}
                 <a class="nav-link {{ request.match('/dashboard/projects') ? 'bg-info':'' }}" href="/dashboard/projects">
                     <div class="sb-nav-link-icon"><i class="fa fa-tasks"></i></div>
                     Projects
@@ -49,6 +68,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-envelope-open-text"></i></div>
                     Contact
                 </a>
+                
                 <div class="sb-sidenav-menu-heading">Account</div>
                 <a class="nav-link {{ request.match('/dashboard/credentials') ? 'bg-info':'' }}" href="/dashboard/credentials">
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>

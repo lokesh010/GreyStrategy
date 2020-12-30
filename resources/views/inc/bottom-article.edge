@@ -37,17 +37,30 @@
           <div class="social-post">
             {{--  loop  --}}
             @each(post in socialPost)
-              <div class="post-item">
-                <div class="fb-post" 
-              data-href="{{post.link}}"
+                @if(post.type === 'facebook')
+                <div class="post-item">
+                  <div 
+                    class="fb-post" 
+                    data-href="{{post.link}}"
                     data-width="00">
+                  </div>
                 </div>
-              </div>
+
+              @elseif(post.type === 'twitter')
+                <blockquote class="twitter-tweet">
+                  <a href="{{post.link}}"></a>
+                </blockquote> 
+
+              @elseif(post.type == 'linkedin')
+                <iframe src="{{post.link}}"
+                  height="653" width="370"
+                  frameborder="0" allowfullscreen="" 
+                  title="Embedded post">
+                </iframe>
+              @endif
             @endeach
           </div>
           <div class="bottom">
-            <span>Embedded</span>
-            <span><a href="#!">View on Social Media</a></span>
           </div>
         </div>
       </div>

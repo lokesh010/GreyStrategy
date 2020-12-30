@@ -14,56 +14,17 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-12">
         <h2 class="abt-title" id="how">How we Work</h2>
-        <p>
-          We provide advice and assistance in diplomatic strategy and
-          technique to public, government, political groups, international
-          corporate organizations that are committed to human rights,
-          democracy and international law, using a variety of working
-          methods.
-        </p>
+        <p>{{work.heading}}</p>
         <img src="./assets/img/hows.png" alt="" />
         <h2 class="abt-title" id="work">Work Philosophy</h2>
         <div class="team-item">
           <div class="team-desc">
             <p>
-              <strong>New Public Governance</strong><br />
-
-              NPG is new trend regime that intertwine the relationship of
-              government with public and private sector for service
-              provision. Key-players of the new regime are state agencies,
-              embassies, I/NGOs, civil society and business entities. Their
-              interests is changing as global agenda and their priorities
-              shift. In this exchanging and competitive environment, public
-              interest is volatile. As a global strategist, we work-out for
-              better ways to communicate strategy and politics.
-
-              <strong>Relations and Diplomacy</strong><br />
-
-              The behavior of any states and the statesmen is determined by
-              the national interest. Including national security, political
-              stability and rising economy also define national interest.
-              Yet the central idea of national interest reposes on public
-              welfare and fair economy. When power and politics come to play
-              and money becomes the way, IRD introduces a win-win situation
-              for all parties. Our professional diplomats help building
-              meaningful relation between man and man and between nation and
-              nation.
-
-              <strong>Global Agenda</strong><br />
-
-              What is at the center of global agenda? Is it development,
-              environment, data, trade, or war and peace? Global agendas
-              surface as plan, policy and action come into operation.
-              National and global power and responsibilities are determined
-              by territory, jurisdiction and laws of general application.
-              These also affect the conduct of the state and
-              inter-governmental organization. Legal experts at GS are
-              better equipped with the knowledge of human rights,
-              environment, energy, investment and trade law.
-            </p>
+              {{{work.desc}}}
+              
           </div>
           <div class="team-img">
-            <img src="./assets/img/how.png" alt="" />
+            <img src="{{ assetsUrl('/uploads/page/'+work.image) }}"  style="object-fit:cover" alt="work-image" />
           </div>
         </div>
       </div>

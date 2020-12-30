@@ -29,6 +29,16 @@ Route.get('/project/:slug', 'ProjectController.show')
 // @desc    VIEWS dashboard
 Route.get('/dashboard', 'ViewController.dashboard').middleware(['auth'])
 // @desc    CRUD
+// Service
+Route.group(() => {
+    Route.get('/', 'ServiceController.index')
+    Route.put('/:id', 'ServiceController.update')
+}).prefix('/dashboard/services').middleware(['auth:session'])
+// Work Philosophy
+Route.group(() => {
+    Route.get('/', 'WorkController.index')
+    Route.put('/:id', 'WorkController.update')
+}).prefix('/dashboard/work-philosophy').middleware(['auth:session'])
 // news
 Route.group(() => {
     Route.get('/create', ({ view }) => view.render('forms.createblogform', {

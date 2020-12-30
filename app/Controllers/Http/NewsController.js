@@ -7,8 +7,6 @@
 const News = use('App/Models/News')
 const Helpers = use('Helpers')
 const fs = require('fs')
-const moment = require("moment")
-
 
 class NewsController {
 

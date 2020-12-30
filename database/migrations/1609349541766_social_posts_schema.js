@@ -7,6 +7,7 @@ class SocialPostsSchema extends Schema {
   up() {
     this.create('social_posts', (table) => {
       table.increments()
+      table.string('type').notNullable()
       table.string('link').notNullable().unique()
       table.timestamps()
     })

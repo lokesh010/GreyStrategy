@@ -1,5 +1,7 @@
 'use strict'
 
+const Work = use('App/Models/Work')
+const Service = use('App/Models/Service')
 const News = use('App/Models/News')
 const Update = use('App/Models/Update')
 const SocialPost = use('App/Models/SocialPost')
@@ -105,15 +107,17 @@ class ViewController {
         return view.render('welcome')
     }
 
-    async about({ view }) {
-        return view.render('about', await bottomArticle())
-    }
-
-    async work({ view }) {
-        return view.render('work', await bottomArticle())
-    }
-
+    about = async ({ view }) => view.render('about', await bottomArticle())
+    
+    async work({ view }){
+        const content = await bottomArticle()
+        content.work = await Work.find(1)
+        return view.render('work', content )
+    } 
+    
     async service({ view }) {
+        const service = await Service.find(1)
+
         const impactstory = await Testimonials.query()
             .select()
             .where('type', 'impactstory')
@@ -130,6 +134,7 @@ class ViewController {
         return view.render('service', {
             impactstory: impactstory.toJSON(),
             ourclients: ourclients.toJSON(),
+            service: service.toJSON(),
             news: articles.news,
             update: articles.update,
             socialPost: articles.socialPost,

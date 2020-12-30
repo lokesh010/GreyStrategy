@@ -3,7 +3,7 @@
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Facebook Posts</h1>
+        <h1 class="mt-4">Social Posts</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard / Socials</li>
         </ol>
@@ -19,11 +19,23 @@
             <div id="detail-1" class="container p-4 bg-light mb-2">
                 <form action="{{ route('SocialPostController.create') }}" method="POST">
                     {{ csrfField() }}
-                    <div class="form-group">
-                        <label for="link">Enter Post Link</label>
-                        <input name="link" class="form-control" placeholder="Enter Link">
+                    <div class="form-group row">
+                        <div class="col-sm-12 col-md-6">
+                            <label for="link">Post Link</label>
+                            <input name="link" class="form-control" placeholder="Enter Link">
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="socialtype">Post Type</label>
+                            <select name="type" class="form-control" id="socialtype">
+                                <option value="facebook">Facebook</option>
+                                <option value="twitter">Twitter</option>
+                                <option value="linkedin">Linkedin</option>
+                            </select>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
             </div>
             {{--  body  --}}
@@ -31,6 +43,7 @@
             <ul class="list-group">
                 @each(post in socialPost)
                     <li class="list-group-item d-flex justify-content-between align-items-center {{$loop.index % 2 == 0 ? 'bg-white': 'bg-light'}}">
+                        <span class="badge badge-secondary mr-4">{{post.type}}</span>
                         <a href="{{post.link}}" target="blank">{{post.link}}</a>
                         <form action="{{'/dashboard/social-posts/'+ post.id + '?_method=DELETE'}}" method="POST">
                             {{ csrfField() }}

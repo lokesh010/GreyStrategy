@@ -1,0 +1,37 @@
+@layout('layout.dashboard')
+@section('content')
+    <div class="p-4">
+        <h3>Work Philosophy</h3>
+            @include('inc.alert')
+        <form action={{'/dashboard/work-philosophy/' + work.id + '?_method=PUT'}} method="POST" enctype="multipart/form-data">
+            {{ csrfField() }}
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <div class="form-group">
+                <img src="{{ assetsUrl('uploads/page/'+work.image) }}" alt="work-img" width="200" height="200" style="object-fit:cover" class="border rounded-circle">
+                <div class="mb-2">
+                    <label for="image">Choose an image</label>
+                    <input name="image" type="file" class="form-control-file">
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('image'), hasErrorFor('image')) }}
+                </div>
+                <hr/>
+                {{--  heading  --}}
+                <div>
+                    <label for="exampleFormControlTextarea1"><b>Heading</b></label>
+                    <textarea class="form-control" name="heading" rows="3">{{work.heading}}</textarea>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                </div>
+                {{--  desc  --}}
+                <label for="desc">Description</label>
+                    <textarea id="summernote" class="bg-white" name="desc">{{{work.desc || ''}}}</textarea>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+            </div>
+                <br/>                      
+            {{--  footer  --}}
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form> 
+    </div>   
+@endsection

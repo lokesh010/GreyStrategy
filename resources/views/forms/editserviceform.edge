@@ -1,0 +1,78 @@
+@layout('layout.dashboard')
+@section('content')
+    <div class="p-4">
+        <h3>Services</h3>
+            @include('inc.alert')
+        <form action={{'/dashboard/services/' + service.id + '?_method=PUT'}} method="POST">
+            {{ csrfField() }}
+            <hr>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            <div class="form-group">
+                {{--  heading  --}}
+                <div>
+                    <label for="exampleFormControlTextarea1"><b>Heading</b></label>
+                    <textarea class="form-control" name="heading" rows="3">{{service.heading}}</textarea>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                </div>
+                <hr>
+                <div class="row">
+                    {{--  arbitration  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Arbitration</b></label>
+                        <textarea class="form-control" name="arbitration" rows="3">{{service.arbitration}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                    {{--  Lobby  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Lobby</b></label>
+                        <textarea class="form-control" name="lobby" rows="3">{{service.lobby}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                    {{--  negotiation  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Negotiations</b></label>
+                        <textarea class="form-control" name="negotiations" rows="3">{{service.negotiations}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                    {{--  strategic  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Strategic Communication</b></label>
+                        <textarea class="form-control" name="strategic" rows="3">{{service.strategic}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                     {{--  mediations  --}}                
+                     <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Mediations</b></label>
+                        <textarea class="form-control" name="mediations" rows="3">{{service.mediations}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                    {{--  political  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Political</b></label>
+                        <textarea class="form-control" name="political" rows="3">{{service.political}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                    {{--  correspondence  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Correspondence</b></label>
+                        <textarea class="form-control" name="correspondence" rows="3">{{service.correspondence}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                    {{--  Consultation  --}}                
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <label for="exampleFormControlTextarea1"><b>Consultation</b></label>
+                        <textarea class="form-control" name="consultation" rows="3">{{service.consultation}}</textarea>
+                        {{ elIf('<span class="text-danger">$self</span>', getErrorFor('desc'), hasErrorFor('desc')) }}
+                    </div>
+                </div>
+            </div>
+                <br/>                      
+            {{--  footer  --}}
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form> 
+    </div>   
+@endsection

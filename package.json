@@ -28,10 +28,10 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.0.6",
+    "adonis-recaptcha2": "^1.2.1",
     "axios": "^0.21.0",
     "mysql": "^2.18.1"
   },
-  "devDependencies": {},
   "autoload": {
     "App": "./app"
   }

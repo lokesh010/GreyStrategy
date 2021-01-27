@@ -1,10 +1,10 @@
-'use strict'
+"use strict";
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Contact = use('App/Models/Contact')
+const Contact = use("App/Models/Contact");
 
 /**
  * Resourceful controller for interacting with contacts
@@ -22,9 +22,9 @@ class ContactController {
   async index({ view }) {
     const contact = await Contact.query()
       .select()
-      .orderBy('created_at', 'desc')
-      .fetch()
-    return view.render('dashboard.contact', { contact: contact.toJSON() })
+      .orderBy("created_at", "desc")
+      .fetch();
+    return view.render("dashboard.contact", { contact: contact.toJSON() });
   }
 
   /**
@@ -36,8 +36,7 @@ class ContactController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create({ request, response, view }) {
-  }
+  async create({ request, response, view }) {}
 
   /**
    * Create/save a new contact.
@@ -48,18 +47,26 @@ class ContactController {
    * @param {Response} ctx.response
    */
   async store({ request, response, session }) {
+    const recaptcha = request.only(["g-recaptcha-response"]);
     const contact = new Contact();
 
-    contact.full_name = request.input('full_name')
-    contact.email = request.input('email')
-    contact.phone = request.input('phone')
-    contact.title = request.input('title')
-    contact.message = request.input('message')
+    contact.full_name = request.input("full_name");
+    contact.email = request.input("email");
+    contact.phone = request.input("phone");
+    contact.title = request.input("title");
+    contact.message = request.input("message");
+    // reCaptcha validations
+    if (!recaptcha["g-recaptcha-response"]) {
+      session.flash({
+        danger: "Please check the 'reCaptcha' Box before submission",
+      });
+      return response.redirect("back");
+    }
 
-    await contact.save()
+    await contact.save();
 
-    session.flash({ success: 'Your message was sent, will get right back!' })
-    response.redirect('back')
+    session.flash({ success: "Your message was sent, will get right back!" });
+    response.redirect("back");
   }
 
   /**
@@ -71,8 +78,7 @@ class ContactController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show({ params, request, response, view }) {
-  }
+  async show({ params, request, response, view }) {}
 
   /**
    * Render a form to update an existing contact.
@@ -83,8 +89,7 @@ class ContactController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit({ params, request, response, view }) {
-  }
+  async edit({ params, request, response, view }) {}
 
   /**
    * Update contact details.
@@ -94,8 +99,7 @@ class ContactController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, response }) {
-  }
+  async update({ params, request, response }) {}
 
   /**
    * Delete a contact with id.
@@ -106,12 +110,12 @@ class ContactController {
    * @param {Response} ctx.response
    */
   async destroy({ params, session, response }) {
-    const contact = await Contact.find(params.id)
-    await contact.delete()
+    const contact = await Contact.find(params.id);
+    await contact.delete();
 
-    session.flash({ success: 'Message Deleted!' })
-    response.redirect('back')
+    session.flash({ success: "Message Deleted!" });
+    response.redirect("back");
   }
 }
 
-module.exports = ContactController
+module.exports = ContactController;

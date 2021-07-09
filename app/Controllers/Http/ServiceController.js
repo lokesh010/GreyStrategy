@@ -3,13 +3,13 @@
 const Service = use('App/Models/Service')
 
 class ServiceController {
- 
-  async index ({ request, response, view }) {
+
+  async index({ request, response, view }) {
     const service = await Service.find(1)
-    return view.render('forms.editserviceform', { service: service.toJSON()})
+    return view.render('forms.editserviceform', { service: service.toJSON() })
   }
 
-  async update ({ params, request, response, session }) {
+  async update({ params, request, response, session }) {
     const service = await Service.find(params.id)
 
     try {
@@ -28,10 +28,10 @@ class ServiceController {
       session.flash({ success: 'Service Updated!' })
       return response.redirect('/dashboard/services')
     } catch (err) {
-        session.flash({ danger: 'Some error occurred' })
-        return response.redirect('back')
-      }
-    
+      session.flash({ danger: 'Some error occurred' })
+      return response.redirect('back')
+    }
+
   }
 
 }

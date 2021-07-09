@@ -108,13 +108,13 @@ class ViewController {
     }
 
     about = async ({ view }) => view.render('about', await bottomArticle())
-    
-    async work({ view }){
+
+    async work({ view }) {
         const content = await bottomArticle()
         content.work = await Work.find(1)
-        return view.render('work', content )
-    } 
-    
+        return view.render('work', content)
+    }
+
     async service({ view }) {
         const service = await Service.find(1)
 
@@ -132,9 +132,9 @@ class ViewController {
 
         const articles = await bottomArticle()
         return view.render('service', {
-            impactstory: impactstory.toJSON(),
-            ourclients: ourclients.toJSON(),
-            service: service.toJSON(),
+            impactstory: impactstory ? impactstory.toJSON() : [],
+            ourclients: ourclients ? ourclients.toJSON() : [],
+            service: service ? service.toJSON() : [],
             news: articles.news,
             update: articles.update,
             socialPost: articles.socialPost,
